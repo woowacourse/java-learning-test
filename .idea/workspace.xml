@@ -4,16 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3c790837-1e96-496d-b7c5-42778307cee8" name="Changes" comment="feat(test): junit, assertj 학습 테스트 추가">
-      <change afterPath="$PROJECT_DIR$/java-language/complete/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/java-language/complete/src/test/java/woowacourse/FunctionalProgrammingTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/java-language/complete/src/test/resources/war-and-peace.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/java-language/initial/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/java-language/initial/src/test/java/woowacourse/FunctionalProgrammingTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/java-language/initial/src/test/resources/war-and-peace.txt" afterDir="false" />
+    <list default="true" id="3c790837-1e96-496d-b7c5-42778307cee8" name="Changes" comment="feat(language): 함수형 프로그래밍 학습 테스트 추가">
+      <change afterPath="$PROJECT_DIR$/clean-code/complete/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/clean-code/complete/src/test/java/woowacourse/ExceptionHandlingTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/clean-code/initial/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/clean-code/initial/src/test/java/woowacourse/ExceptionHandlingTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-language/initial/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/java-language/initial/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,36 +47,36 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2b7KAlxmF0fJ5qB7dDXgaFB4qfx" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DELOMBOK_PRE_COMMIT": "false",
-    "Gradle.AssertJTest.executor": "Run",
-    "Gradle.FunctionalProgrammingTest (1).executor": "Run",
-    "Gradle.FunctionalProgrammingTest.executor": "Run",
-    "Gradle.JUnit5Test.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "jdk.selected.JAVA_MODULE": "corretto-17",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/jaeyeonling/workspace/github/woowacourse/java-learning-test",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DELOMBOK_PRE_COMMIT&quot;: &quot;false&quot;,
+    &quot;Gradle.AssertJTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.FunctionalProgrammingTest (1).executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.FunctionalProgrammingTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.JUnit5Test.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;corretto-17&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/jaeyeonling/workspace/github/woowacourse/java-learning-test&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -206,7 +204,8 @@
       <option name="presentableId" value="Default" />
       <updated>1705560535994</updated>
       <workItem from="1705560537244" duration="1674000" />
-      <workItem from="1706247607930" duration="429000" />
+      <workItem from="1706247607930" duration="808000" />
+      <workItem from="1706833429500" duration="124000" />
     </task>
     <task id="LOCAL-00001" summary="feat(test): junit, assertj 학습 테스트 추가">
       <option name="closed" value="true" />
@@ -216,7 +215,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705561490230</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="feat(language): 함수형 프로그래밍 학습 테스트 추가">
+      <option name="closed" value="true" />
+      <created>1706248092407</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1706248092407</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -224,6 +231,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat(test): junit, assertj 학습 테스트 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(test): junit, assertj 학습 테스트 추가" />
+    <MESSAGE value="feat(language): 함수형 프로그래밍 학습 테스트 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(language): 함수형 프로그래밍 학습 테스트 추가" />
   </component>
 </project>
