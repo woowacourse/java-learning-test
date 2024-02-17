@@ -365,8 +365,8 @@ public class JUnit5Test {
                     () -> assertEquals(21, 7 * 3),
                     () -> assertEquals(16, 7 * 3 ^ 5),
                     () -> assertEquals(5, 7 * 3 / 5 + 33 / 21),
-                    () -> assertEquals(23, 33 * 3 / 5 + 7 / 2),
-                    () -> assertEquals(22, 33 * 3 / 5 + 7 / 2 + 1)
+                    () -> assertEquals(22, 33 * 3 / 5 + 7 / 2),
+                    () -> assertEquals(23, 33 * 3 / 5 + 7 / 2 + 1)
             );
 
         }
