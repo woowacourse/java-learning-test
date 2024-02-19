@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3c790837-1e96-496d-b7c5-42778307cee8" name="Changes" comment="feat(language): 함수형 프로그래밍 학습 테스트 추가">
-      <change afterPath="$PROJECT_DIR$/clean-code/complete/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/clean-code/complete/src/test/java/woowacourse/ExceptionHandlingTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/clean-code/initial/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/clean-code/initial/src/test/java/woowacourse/ExceptionHandlingTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+    <list default="true" id="3c790837-1e96-496d-b7c5-42778307cee8" name="Changes" comment="feat(clean-code): 좋은 예외 처리 학습 테스트 추가">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-language/initial/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/java-language/initial/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-language/complete/src/test/java/woowacourse/FunctionalProgrammingTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-language/complete/src/test/java/woowacourse/FunctionalProgrammingTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,7 +199,8 @@
       <updated>1705560535994</updated>
       <workItem from="1705560537244" duration="1674000" />
       <workItem from="1706247607930" duration="808000" />
-      <workItem from="1706833429500" duration="124000" />
+      <workItem from="1706833429500" duration="1762000" />
+      <workItem from="1708315905074" duration="2078000" />
     </task>
     <task id="LOCAL-00001" summary="feat(test): junit, assertj 학습 테스트 추가">
       <option name="closed" value="true" />
@@ -223,7 +218,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706248092407</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="feat(clean-code): 좋은 예외 처리 학습 테스트 추가">
+      <option name="closed" value="true" />
+      <created>1706833591617</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1706833591617</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -232,6 +235,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat(test): junit, assertj 학습 테스트 추가" />
     <MESSAGE value="feat(language): 함수형 프로그래밍 학습 테스트 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(language): 함수형 프로그래밍 학습 테스트 추가" />
+    <MESSAGE value="feat(clean-code): 좋은 예외 처리 학습 테스트 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(clean-code): 좋은 예외 처리 학습 테스트 추가" />
   </component>
 </project>
