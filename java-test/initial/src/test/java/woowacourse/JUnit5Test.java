@@ -395,30 +395,30 @@ public class JUnit5Test {
         /**
          * `@ValueSource` 애노테이션은 `@ParameterizedTest` 애노테이션과 함께 사용되며 정의된 값을 하나의 인자로 받아들이는 역할을 합니다.
          * `@ValueSource` 내부에 선언된 `ints` 속성은 정수 형태의 인자를 입력할 수 있도록 만들어줍니다.
-         * <p>
          */
         @ParameterizedTest
-        @ValueSource(ints = {})
-        @DisplayName("ValueSource_애노테이션을_붙여_정수_매개변수를_한_개_입력받는다")
-        void ValueSource_애노테이션을_붙여_테스트_메개변수를_입력받는다(int value) {
+        @ValueSource(ints = 1)
+        @DisplayName("ValueSource_애노테이션을_붙여_정수_매개변수를_한_번_입력받는다")
+        void ValueSource_애노테이션을_붙여_정수_매개변수를_한_번_입력받는다(int value) {
         }
 
         /**
          * `@ValueSource` 애노테이션의 속성들은 다음과 같이 배열 형태로 입력이 가능합니다.
+         * `@ValueSource` 애노테이션의 속성을 배열 형태로 입력해줌으로서, 각 배열의 값마다 각각의 테스트를 수행하도록 구현할 수 있습니다.
          */
         @ParameterizedTest
-        @ValueSource(ints = {})
-        @DisplayName("ValueSource_애노테이션을_붙여_정수_매개변수를_여러_개_입력받는다")
-        void ValueSource_애노테이션을_붙여_정수_매개변수를_여러_개_입력받는다(int value) {
+        @ValueSource(ints = {1, 2, 3, 4})
+        @DisplayName("ValueSource_애노테이션을_붙여_정수_매개변수를_여러_번_입력받는다")
+        void ValueSource_애노테이션을_붙여_정수_매개변수를_여러_번_입력받는다(int value) {
         }
 
         /**
          * `@ValueSource` 애노테이션은 `ints`와 같은 속성을 통해 정수 형태를 포함한 string, char, long 등의 다양한 타입을 지원합니다.
          */
         @ParameterizedTest
-        @ValueSource(strings = {})
-        @DisplayName("ValueSource_애노테이션을_붙여_문자열_매개변수를_한_개_입력받는다")
-        void ValueSource_애노테이션을_붙여_문자열_매개변수를_한_개_입력받는다(String value) {
+        @ValueSource(strings = {"a", "b", "c"})
+        @DisplayName("ValueSource_애노테이션을_붙여_문자열_매개변수를_여러_번_입력받는다")
+        void ValueSource_애노테이션을_붙여_문자열_매개변수를_여러_번_입력받는다(String value) {
         }
 
         /**
@@ -426,28 +426,44 @@ public class JUnit5Test {
          */
         @ParameterizedTest
         @MethodSource("methodSourceTestArguments")
-        @DisplayName("MethodSource_애노테이션을_붙여_TestObject_매개변수를_한_개_입력받는다")
-        void MethodSource_애노테이션을_붙여_TestObject_매개변수를_한_개_입력받는다(TestObject value) {
+        @DisplayName("MethodSource_애노테이션을_붙여_Object_매개변수를_한_번_입력받는다")
+        void MethodSource_애노테이션을_붙여_Object_매개변수를_한_번_입력받는다(Object value) {
         }
 
         /**
+         * `@MethodSource`의 속성으로 사용된 해당 메서드는 `Arguments`를 `Stream`에 담아 return 하여, 각각의 `Arguments`가 테스트에 하나씩 전달되도록 구현된 형태입니다.
          * `Arguments`란 `ParameterizedTest` 에서 사용되는 값의 하나를 가리키며, `JUnit`이 제공하는 객체입니다.
+         * <p>
+         * `@MethodSource`의 속성으로 사용되는 메서드는 `Stream<?>` 외에도 `Iterator<?>`, `Iterable<?>` 또는 `Object[]` 타입을 반환할 수 있습니다.
          */
-        static Stream<Arguments> methodSourceTestArguments() {
+        private static Stream<Arguments> methodSourceTestArguments() {
+            return null;
+        }
+
+        @ParameterizedTest
+        @MethodSource("methodSourcesTestArguments")
+        @DisplayName("MethodSource_애노테이션을_붙여_Object_매개변수를_여러_번_입력받는다")
+        void MethodSource_애노테이션을_붙여_Object_매개변수를_여러_번_입력받는다(Object value) {
+        }
+
+        /**
+         * `Arguments`를 `Stream` 내부에 여러 개 선언해줌으로서, 각 `Arguments`마다 각각의 테스트를 수행하도록 구현할 수 있습니다.
+         */
+        private static Stream<Arguments> methodSourcesTestArguments() {
             return null;
         }
 
         /**
-         * `@MethodSource` 애노테이션을 사용하면 `Iterable` 또한 테스트의 인자로 입력받을 수 있습니다.
-         * `@MethodSource` 애노테이션에 의해 인자로 사용되는 메서드는 `Iterator<?>` 외에도 `Stream<?>`, `Iterable<?>` 또는 `Object[]` 타입을 반환할 수 있습니다.
+         * `@MethodSource` 애노테이션을 사용하면 `Iterable` 또한 테스트의 인자로 입력받을 수 있으며, 이 외에 어떠한 객체라도 입력받을 수 있습니다.
+         * `Arguments`의 `arguments` 메서드는 매개변수로 `Object... arguments`를 입력받고, 내부 구현을 통해 `Arguments` 객체를 생성하기 때문에 어떠한 타입이든 테스트의 인자로 사용할 수 있는 것입니다.
          */
         @ParameterizedTest
-        @MethodSource("methodSourcesTestArguments")
-        @DisplayName("MethodSource_애노테이션을_붙여_List_TestObject_매개변수를_입력받는다")
-        void MethodSource_애노테이션을_붙여_List_TestObject_매개변수를_입력받는다(List<TestObject> value) {
+        @MethodSource("methodSourceIterableTestArguments")
+        @DisplayName("MethodSource_애노테이션을_붙여_Iterable_매개변수를_입력받는다")
+        void MethodSource_애노테이션을_붙여_Iterable_매개변수를_입력받는다(List<Object> value) {
         }
 
-        static Stream<Arguments> methodSourcesTestArguments() {
+        private static Stream<Arguments> methodSourceIterableTestArguments() {
             return null;
         }
 
@@ -456,15 +472,12 @@ public class JUnit5Test {
          */
         @ParameterizedTest
         @MethodSource("methodSourcesStringAndIntegerTestArguments")
-        @DisplayName("MethodSource_애노테이션을_붙여_List_TestObject_매개변수를_입력받는다")
+        @DisplayName("MethodSource_애노테이션을_붙여_정수와_문자열_매개변수를_입력받는다")
         void MethodSource_애노테이션을_붙여_정수와_문자열_매개변수를_입력받는다(String v1, int v2) {
         }
 
-        static Stream<Arguments> methodSourcesStringAndIntegerTestArguments() {
+        private static Stream<Arguments> methodSourcesStringAndIntegerTestArguments() {
             return null;
-        }
-
-        private static class TestObject {
         }
     }
 
