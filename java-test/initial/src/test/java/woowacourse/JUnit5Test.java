@@ -1,5 +1,6 @@
 package woowacourse;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -11,8 +12,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.List;
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * JUnit5는 자바 언어를 사용하는 소프트웨어 개발자들을 위한 테스트 프레임워크 중 하나입니다.
@@ -398,7 +398,7 @@ public class JUnit5Test {
          */
         @ParameterizedTest
         @ValueSource(ints = 1)
-        @DisplayName("ValueSource_애노테이션을_붙여_정수_매개변수를_한_번_입력받는다")
+        @DisplayName("ValueSource 애노테이션을 붙여 정수 매개변수를 한 번 입력받는다")
         void ValueSource_애노테이션을_붙여_정수_매개변수를_한_번_입력받는다(int value) {
         }
 
@@ -406,19 +406,41 @@ public class JUnit5Test {
          * `@ValueSource` 애노테이션의 속성들은 다음과 같이 배열 형태로 입력이 가능합니다.
          * `@ValueSource` 애노테이션의 속성을 배열 형태로 입력해줌으로서, 각 배열의 값마다 각각의 테스트를 수행하도록 구현할 수 있습니다.
          */
-        @ParameterizedTest
-        @ValueSource(ints = {1, 2, 3, 4})
-        @DisplayName("ValueSource_애노테이션을_붙여_정수_매개변수를_여러_번_입력받는다")
-        void ValueSource_애노테이션을_붙여_정수_매개변수를_여러_번_입력받는다(int value) {
+        @Test
+        @DisplayName("ValueSource 애노테이션을 붙여 정수 매개변수를 여러 번 입력받는다")
+        void ValueSource_애노테이션을_붙여_정수_매개변수를_여러_번_입력받는다() {
+            //TODO: `@ValueSource`를 사용하지 않고 여러 정수의 범위를 테스트하는 것과, `@ValueSource`를 사용해서 테스트하는 것의 차이를 비교해보세요.
+            Assertions.assertThat(1).isBetween(0,10);
+            Assertions.assertThat(2).isBetween(0,10);
+            Assertions.assertThat(3).isBetween(0,10);
+            Assertions.assertThat(4).isBetween(0,10);
         }
 
         /**
          * `@ValueSource` 애노테이션은 `ints`와 같은 속성을 통해 정수 형태를 포함한 string, char, long 등의 다양한 타입을 지원합니다.
          */
-        @ParameterizedTest
-        @ValueSource(strings = {"a", "b", "c"})
-        @DisplayName("ValueSource_애노테이션을_붙여_문자열_매개변수를_여러_번_입력받는다")
-        void ValueSource_애노테이션을_붙여_문자열_매개변수를_여러_번_입력받는다(String value) {
+        @Test
+        @DisplayName("ValueSource 애노테이션을 붙여 문자열 매개변수를 여러 번 입력받는다")
+        void ValueSource_애노테이션을_붙여_문자열_매개변수를_여러_번_입력받는다() {
+            //TODO: `@ValueSource`를 사용하지 않고 여러 문자열의 Length를 테스트하는 것과, `@ValueSource`를 사용해서 테스트하는 것의 차이를 비교해보세요.
+            String value1 = "a";
+            String value2 = "b";
+            String value3 = "c";
+
+            Assertions.assertThat(value1.length()).isEqualTo(1);
+            Assertions.assertThat(value2.length()).isEqualTo(1);
+            Assertions.assertThat(value3.length()).isEqualTo(1);
+        }
+
+        @Test
+        @DisplayName("ValueSource 애노테이션을 활용하여 1부터 5까지의 문자열 값을 Integer로 parseInt하는 로직이 예외를 발생시키지 않는 지 검증한다")
+        void ValueSource_애노테이션을_활용하여_1부터_5까지의_문자열_값을_Integer로_변경하는_로직이_예외를_발생시키지_않는_지_검증한다() {
+            // TODO: `@ValueSource`를 사용하지 않고 1~5 까지의 문자열 값이 `Integer`로 `parseInt`하는 로직을 테스트하는 것과, `@ValueSource`를 사용해서 테스트하는 것의 차이를 비교해보세요.
+            Assertions.assertThatCode(() -> Integer.parseInt("1")).doesNotThrowAnyException();
+            Assertions.assertThatCode(() -> Integer.parseInt("2")).doesNotThrowAnyException();
+            Assertions.assertThatCode(() -> Integer.parseInt("3")).doesNotThrowAnyException();
+            Assertions.assertThatCode(() -> Integer.parseInt("4")).doesNotThrowAnyException();
+            Assertions.assertThatCode(() -> Integer.parseInt("5")).doesNotThrowAnyException();
         }
 
         /**
@@ -426,7 +448,7 @@ public class JUnit5Test {
          */
         @ParameterizedTest
         @MethodSource("methodSourceTestArguments")
-        @DisplayName("MethodSource_애노테이션을_붙여_Object_매개변수를_한_번_입력받는다")
+        @DisplayName("MethodSource 애노테이션을 붙여 Object 매개변수를 한 번 입력받는다")
         void MethodSource_애노테이션을_붙여_Object_매개변수를_한_번_입력받는다(Object value) {
         }
 
@@ -437,20 +459,30 @@ public class JUnit5Test {
          * `@MethodSource`의 속성으로 사용되는 메서드는 `Stream<?>` 외에도 `Iterator<?>`, `Iterable<?>` 또는 `Object[]` 타입을 반환할 수 있습니다.
          */
         private static Stream<Arguments> methodSourceTestArguments() {
-            return null;
+            return Stream.of(Arguments.arguments(new Object()));
         }
 
         @ParameterizedTest
         @MethodSource("methodSourcesTestArguments")
-        @DisplayName("MethodSource_애노테이션을_붙여_Object_매개변수를_여러_번_입력받는다")
-        void MethodSource_애노테이션을_붙여_Object_매개변수를_여러_번_입력받는다(Object value) {
+        @DisplayName("MethodSource 애노테이션을 붙여 Object 매개변수를 여러 번 입력받는다")
+        void MethodSource_애노테이션을_붙여_Object_매개변수를_여러_번_입력받는다() {
+            //TODO: `MethodSource`를 사용하지 않고 Object 객체들을 직접 선언하여 테스트하는 방식과, `MethodSource`를 사용하여 Object를 입력받아 테스트하는 방식의 차이를 비교해보세요.
+            Object object1 = new Object();
+            Object object2 = new Object();
+            Object object3 = new Object();
+            Object object4 = new Object();
+
+            Assertions.assertThat(object1).isInstanceOf(Object.class);
+            Assertions.assertThat(object2).isInstanceOf(Object.class);
+            Assertions.assertThat(object3).isInstanceOf(Object.class);
+            Assertions.assertThat(object4).isInstanceOf(Object.class);
         }
 
         /**
          * `Arguments`를 `Stream` 내부에 여러 개 선언해줌으로서, 각 `Arguments`마다 각각의 테스트를 수행하도록 구현할 수 있습니다.
          */
         private static Stream<Arguments> methodSourcesTestArguments() {
-            return null;
+            return Stream.of(Arguments.arguments());
         }
 
         /**
@@ -459,25 +491,37 @@ public class JUnit5Test {
          */
         @ParameterizedTest
         @MethodSource("methodSourceIterableTestArguments")
-        @DisplayName("MethodSource_애노테이션을_붙여_Iterable_매개변수를_입력받는다")
-        void MethodSource_애노테이션을_붙여_Iterable_매개변수를_입력받는다(List<Object> value) {
+        @DisplayName("MethodSource 애노테이션을 붙여 Iterable 매개변수를 입력받는다")
+        void MethodSource_애노테이션을_붙여_Iterable_매개변수를_입력받는다() {
+            //TODO: `MethodSource`를 사용하지 않고 Iterable 인스턴스들을 직접 선언하여 테스트하는 방식과, `MethodSource`를 통해 입력받아 테스트하는 방식의 차이를 비교해보세요.
+            List<Integer> numbers1 = List.of(1, 4, 5);
+            List<Integer> numbers2 = List.of(1, 2, 3);
+            List<Integer> numbers3 = List.of(1, 3, 4);
+
+            Assertions.assertThat(numbers1.size()).isEqualTo(3);
+            Assertions.assertThat(numbers2.size()).isEqualTo(3);
+            Assertions.assertThat(numbers3.size()).isEqualTo(3);
         }
 
         private static Stream<Arguments> methodSourceIterableTestArguments() {
-            return null;
+            return Stream.of(Arguments.arguments());
         }
 
         /**
          * `@MethodSource` 애노테이션과 `Arguments` 객체를 사용하면 서로 다른 자료형의 값 또한 테스트의 인자로 함께 입력받을 수 있습니다.
          */
-        @ParameterizedTest
-        @MethodSource("methodSourcesStringAndIntegerTestArguments")
-        @DisplayName("MethodSource_애노테이션을_붙여_정수와_문자열_매개변수를_입력받는다")
-        void MethodSource_애노테이션을_붙여_정수와_문자열_매개변수를_입력받는다(String v1, int v2) {
+        @Test
+        @DisplayName("MethodSource 애노테이션을 붙여 정수와 문자열 매개변수를 입력받는다")
+        void MethodSource_애노테이션을_붙여_정수와_문자열_매개변수를_입력받는다() {
+            //TODO: `MethodSource`를 사용하지 않고 문자열과 정수 변수들을 직접 선언하여 테스트하는 방식과, `MethodSource`를 통해 입력받아 테스트하는 방식의 차이를 비교해보세요.
+            Assertions.assertThat(Integer.parseInt("1")).isEqualTo(1);
+            Assertions.assertThat(Integer.parseInt("2")).isEqualTo(2);
+            Assertions.assertThat(Integer.parseInt("3")).isEqualTo(3);
+            Assertions.assertThat(Integer.parseInt("4")).isEqualTo(4);
         }
 
         private static Stream<Arguments> methodSourcesStringAndIntegerTestArguments() {
-            return null;
+            return Stream.of(Arguments.arguments());
         }
     }
 

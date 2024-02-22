@@ -1,5 +1,6 @@
 package woowacourse;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -395,7 +396,7 @@ public class JUnit5Test {
          */
         @ParameterizedTest
         @ValueSource(ints = 1)
-        @DisplayName("ValueSource_애노테이션을_붙여_정수_매개변수를_한_번_입력받는다")
+        @DisplayName("ValueSource 애노테이션을 붙여 정수 매개변수를 한 번 입력받는다")
         void ValueSource_애노테이션을_붙여_정수_매개변수를_한_번_입력받는다(int value) {
         }
 
@@ -405,8 +406,9 @@ public class JUnit5Test {
          */
         @ParameterizedTest
         @ValueSource(ints = {1, 2, 3, 4})
-        @DisplayName("ValueSource_애노테이션을_붙여_정수_매개변수를_여러_번_입력받는다")
+        @DisplayName("ValueSource 애노테이션을 붙여 정수 매개변수를 여러 번 입력받는다")
         void ValueSource_애노테이션을_붙여_정수_매개변수를_여러_번_입력받는다(int value) {
+            Assertions.assertThat(value).isBetween(0, 10);
         }
 
         /**
@@ -414,8 +416,17 @@ public class JUnit5Test {
          */
         @ParameterizedTest
         @ValueSource(strings = {"a", "b", "c"})
-        @DisplayName("ValueSource_애노테이션을_붙여_문자열_매개변수를_여러_번_입력받는다")
+        @DisplayName("ValueSource 애노테이션을 붙여 문자열 매개변수를 여러 번 입력받는다")
         void ValueSource_애노테이션을_붙여_문자열_매개변수를_여러_번_입력받는다(String value) {
+            Assertions.assertThat(value.length()).isEqualTo(1);
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = {"1", "2", "3", "4", "5"})
+        @DisplayName("ValueSource 애노테이션을 활용하여 1부터 5까지의 문자열 값을 Integer로 parseInt하는 로직이 예외를 발생시키지 않는 지 검증한다")
+        void ValueSource_애노테이션을_활용하여_1부터_5까지의_문자열_값을_Integer로_변경하는_로직이_예외를_발생시키지_않는_지_검증한다(String value) {
+            Assertions.assertThatCode(() -> Integer.parseInt(value))
+                    .doesNotThrowAnyException();
         }
 
         /**
@@ -423,7 +434,7 @@ public class JUnit5Test {
          */
         @ParameterizedTest
         @MethodSource("methodSourceTestArguments")
-        @DisplayName("MethodSource_애노테이션을_붙여_Object_매개변수를_한_번_입력받는다")
+        @DisplayName("MethodSource 애노테이션을 붙여 Object 매개변수를 한 번 입력받는다")
         void MethodSource_애노테이션을_붙여_Object_매개변수를_한_번_입력받는다(Object value) {
         }
 
@@ -441,8 +452,9 @@ public class JUnit5Test {
 
         @ParameterizedTest
         @MethodSource("methodSourcesTestArguments")
-        @DisplayName("MethodSource_애노테이션을_붙여_Object_매개변수를_여러_번_입력받는다")
-        void MethodSource_애노테이션을_붙여_Object_매개변수를_여러_번_입력받는다(Object value) {
+        @DisplayName("MethodSource 애노테이션을 붙여 Object 매개변수를 여러 번 입력받는다")
+        void MethodSource_애노테이션을_붙여_Object_매개변수를_여러_번_입력받는다(Object object) {
+            Assertions.assertThat(object).isInstanceOf(Object.class);
         }
 
         /**
@@ -450,6 +462,7 @@ public class JUnit5Test {
          */
         private static Stream<Arguments> methodSourcesTestArguments() {
             return Stream.of(
+                    Arguments.arguments(new Object()),
                     Arguments.arguments(new Object()),
                     Arguments.arguments(new Object()),
                     Arguments.arguments(new Object())
@@ -462,13 +475,18 @@ public class JUnit5Test {
          */
         @ParameterizedTest
         @MethodSource("methodSourceIterableTestArguments")
-        @DisplayName("MethodSource_애노테이션을_붙여_Iterable_매개변수를_입력받는다")
-        void MethodSource_애노테이션을_붙여_Iterable_매개변수를_입력받는다(List<Object> value) {
+        @DisplayName("MethodSource 애노테이션을 붙여 Iterable 매개변수를 입력받는다")
+        void MethodSource_애노테이션을_붙여_Iterable_매개변수를_입력받는다(List<Integer> values) {
+            Assertions.assertThat(values.size()).isEqualTo(3);
         }
 
         private static Stream<Arguments> methodSourceIterableTestArguments() {
             return Stream.of(
-                    Arguments.arguments(List.of(new Object(), new Object(), new Object()))
+                    Arguments.arguments(
+                            List.of(1, 4, 5),
+                            List.of(1, 2, 3),
+                            List.of(1, 3, 4)
+                    )
             );
         }
 
@@ -477,13 +495,17 @@ public class JUnit5Test {
          */
         @ParameterizedTest
         @MethodSource("methodSourcesStringAndIntegerTestArguments")
-        @DisplayName("MethodSource_애노테이션을_붙여_정수와_문자열_매개변수를_입력받는다")
+        @DisplayName("MethodSource 애노테이션을 붙여 정수와 문자열 매개변수를 입력받는다")
         void MethodSource_애노테이션을_붙여_정수와_문자열_매개변수를_입력받는다(String v1, int v2) {
+            Assertions.assertThat(Integer.parseInt(v1)).isEqualTo(v2);
         }
 
         private static Stream<Arguments> methodSourcesStringAndIntegerTestArguments() {
             return Stream.of(
-                    Arguments.arguments("1", 1)
+                    Arguments.arguments("1", 1),
+                    Arguments.arguments("2", 2),
+                    Arguments.arguments("3", 3),
+                    Arguments.arguments("4", 4)
             );
         }
     }
