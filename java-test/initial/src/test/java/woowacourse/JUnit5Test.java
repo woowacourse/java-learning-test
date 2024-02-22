@@ -12,7 +12,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.List;
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * JUnit5는 자바 언어를 사용하는 소프트웨어 개발자들을 위한 테스트 프레임워크 중 하나입니다.
@@ -409,11 +410,11 @@ public class JUnit5Test {
         @Test
         @DisplayName("ValueSource 애노테이션을 붙여 정수 매개변수를 여러 번 입력받는다")
         void ValueSource_애노테이션을_붙여_정수_매개변수를_여러_번_입력받는다() {
-            //TODO: `@ValueSource`를 사용하지 않고 여러 정수의 범위를 테스트하는 것과, `@ValueSource`를 사용해서 테스트하는 것의 차이를 비교해보세요.
-            Assertions.assertThat(1).isBetween(0,10);
-            Assertions.assertThat(2).isBetween(0,10);
-            Assertions.assertThat(3).isBetween(0,10);
-            Assertions.assertThat(4).isBetween(0,10);
+            // TODO: `@ValueSource`를 사용하지 않고 여러 정수의 범위를 테스트하는 것과, `@ValueSource`를 사용해서 테스트하는 것의 차이를 비교해보세요.
+            Assertions.assertThat(1).isBetween(0, 10);
+            Assertions.assertThat(2).isBetween(0, 10);
+            Assertions.assertThat(3).isBetween(0, 10);
+            Assertions.assertThat(4).isBetween(0, 10);
         }
 
         /**
@@ -422,7 +423,7 @@ public class JUnit5Test {
         @Test
         @DisplayName("ValueSource 애노테이션을 붙여 문자열 매개변수를 여러 번 입력받는다")
         void ValueSource_애노테이션을_붙여_문자열_매개변수를_여러_번_입력받는다() {
-            //TODO: `@ValueSource`를 사용하지 않고 여러 문자열의 Length를 테스트하는 것과, `@ValueSource`를 사용해서 테스트하는 것의 차이를 비교해보세요.
+            // TODO: `@ValueSource`를 사용하지 않고 여러 문자열의 Length를 테스트하는 것과, `@ValueSource`를 사용해서 테스트하는 것의 차이를 비교해보세요.
             String value1 = "a";
             String value2 = "b";
             String value3 = "c";
@@ -435,7 +436,7 @@ public class JUnit5Test {
         @Test
         @DisplayName("ValueSource 애노테이션을 활용하여 1부터 5까지의 문자열 값을 Integer로 parseInt하는 로직이 예외를 발생시키지 않는 지 검증한다")
         void ValueSource_애노테이션을_활용하여_1부터_5까지의_문자열_값을_Integer로_변경하는_로직이_예외를_발생시키지_않는_지_검증한다() {
-            // TODO: `@ValueSource`를 사용하지 않고 1~5 까지의 문자열 값이 `Integer`로 `parseInt`하는 로직을 테스트하는 것과, `@ValueSource`를 사용해서 테스트하는 것의 차이를 비교해보세요.
+            // TODO: `@ValueSource`를 사용하지 않고 1~5 까지의 문자열 값을 `Integer`로 `parseInt`하는 로직을 테스트하는 것과, `@ValueSource`를 사용해서 테스트하는 것의 차이를 비교해보세요.
             Assertions.assertThatCode(() -> Integer.parseInt("1")).doesNotThrowAnyException();
             Assertions.assertThatCode(() -> Integer.parseInt("2")).doesNotThrowAnyException();
             Assertions.assertThatCode(() -> Integer.parseInt("3")).doesNotThrowAnyException();
@@ -466,7 +467,7 @@ public class JUnit5Test {
         @MethodSource("methodSourcesTestArguments")
         @DisplayName("MethodSource 애노테이션을 붙여 Object 매개변수를 여러 번 입력받는다")
         void MethodSource_애노테이션을_붙여_Object_매개변수를_여러_번_입력받는다() {
-            //TODO: `MethodSource`를 사용하지 않고 Object 객체들을 직접 선언하여 테스트하는 방식과, `MethodSource`를 사용하여 Object를 입력받아 테스트하는 방식의 차이를 비교해보세요.
+            // TODO: `MethodSource`를 사용하지 않고 Object 객체들을 직접 선언하여 테스트하는 방식과, `MethodSource`를 사용하여 Object를 입력받아 테스트하는 방식의 차이를 비교해보세요.
             Object object1 = new Object();
             Object object2 = new Object();
             Object object3 = new Object();
@@ -493,7 +494,7 @@ public class JUnit5Test {
         @MethodSource("methodSourceIterableTestArguments")
         @DisplayName("MethodSource 애노테이션을 붙여 Iterable 매개변수를 입력받는다")
         void MethodSource_애노테이션을_붙여_Iterable_매개변수를_입력받는다() {
-            //TODO: `MethodSource`를 사용하지 않고 Iterable 인스턴스들을 직접 선언하여 테스트하는 방식과, `MethodSource`를 통해 입력받아 테스트하는 방식의 차이를 비교해보세요.
+            // TODO: `MethodSource`를 사용하지 않고 Iterable 인스턴스들을 직접 선언하여 테스트하는 방식과, `MethodSource`를 통해 입력받아 테스트하는 방식의 차이를 비교해보세요.
             List<Integer> numbers1 = List.of(1, 4, 5);
             List<Integer> numbers2 = List.of(1, 2, 3);
             List<Integer> numbers3 = List.of(1, 3, 4);
@@ -513,7 +514,7 @@ public class JUnit5Test {
         @Test
         @DisplayName("MethodSource 애노테이션을 붙여 정수와 문자열 매개변수를 입력받는다")
         void MethodSource_애노테이션을_붙여_정수와_문자열_매개변수를_입력받는다() {
-            //TODO: `MethodSource`를 사용하지 않고 문자열과 정수 변수들을 직접 선언하여 테스트하는 방식과, `MethodSource`를 통해 입력받아 테스트하는 방식의 차이를 비교해보세요.
+            // TODO: `MethodSource`를 사용하지 않고 문자열과 정수 변수들을 직접 선언하여 테스트하는 방식과, `MethodSource`를 통해 입력받아 테스트하는 방식의 차이를 비교해보세요.
             Assertions.assertThat(Integer.parseInt("1")).isEqualTo(1);
             Assertions.assertThat(Integer.parseInt("2")).isEqualTo(2);
             Assertions.assertThat(Integer.parseInt("3")).isEqualTo(3);
