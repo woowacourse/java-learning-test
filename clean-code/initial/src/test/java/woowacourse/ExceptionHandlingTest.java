@@ -167,6 +167,7 @@ public class ExceptionHandlingTest {
             class ChildException extends SuperException {
             }
 
+            //  TODO: 아래 코드를 적절히 수정하여 컴파일 에러를 해결해보세요.
             try {
                 int randomValue = new Random().nextBoolean() ? 1 : 2;
 
@@ -175,15 +176,11 @@ public class ExceptionHandlingTest {
                 } else if (randomValue == 2) {
                     throw new ChildException();
                 }
+            } catch (final SuperException e) { // Note: 하위 클래스의 예외를 먼저 처리하지 않으면 컴파일 에러가 발생한다.
+                System.out.println("예외 처리 성공");
             } catch (final ChildException e) {
                 System.out.println("예외 처리 성공");
             }
-            /* TODO: 아래 코드의 주석을 풀어 예외 처리를 통해 컴파일 에러를 해결해보세요.
-            catch (final SuperException e) { // Note: 하위 클래스의 예외를 먼저 처리하지 않으면 컴파일 에러가 발생한다.
-                System.out.println("예외 처리 성공");
-            }
-             */
-
         }
 
         /**

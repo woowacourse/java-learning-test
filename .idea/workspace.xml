@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3c790837-1e96-496d-b7c5-42778307cee8" name="Changes" comment="feat(clean-code): 좋은 예외 처리 학습 테스트 추가">
+      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/clean-code/complete/src/test/java/woowacourse/ExceptionHandlingTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/clean-code/complete/src/test/java/woowacourse/ExceptionHandlingTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean-code/initial/src/test/java/woowacourse/ExceptionHandlingTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/clean-code/initial/src/test/java/woowacourse/ExceptionHandlingTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,7 +230,7 @@
       <workItem from="1708315905074" duration="2078000" />
       <workItem from="1708571348972" duration="319000" />
       <workItem from="1708575072465" duration="317000" />
-      <workItem from="1708923718679" duration="335000" />
+      <workItem from="1708923718679" duration="766000" />
     </task>
     <task id="LOCAL-00001" summary="feat(test): junit, assertj 학습 테스트 추가">
       <option name="closed" value="true" />
